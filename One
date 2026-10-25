@@ -1,0 +1,54 @@
+work = []
+completed = []
+while True:
+    print("-" * 40)
+    print("=== مدیریت کارها ===")
+    print("1. افزودن کار")
+    print("2. نمایش کارها")
+    print("3. حذف کار")
+    print("4. انجام‌شده")
+    print("5. خروج")
+    print("-" * 40)
+    UserSelection = int(input("لطفا یکی از اعداد را انتخاب کنید."))
+    if  UserSelection >= 6 or UserSelection <= 0:
+        print("لطفا عدد مناسب انتخاب کنید.")
+        continue
+    if UserSelection == 1:
+        work.append(input("Enter a work"))
+        completed.append(False)
+    if UserSelection == 2:
+        if work == []:
+            print("کاری ثبت نشده است.")
+            continue
+        for index, item in enumerate(work ,start=1):
+            print(index, item)
+        for index, item in enumerate(completed, start=1):
+            print(index, item)
+    if UserSelection == 3:
+        if work == []:
+            print("کاری ثبت نشده است.")
+            continue
+        for index, item in enumerate(work ,start=1):
+            print(index, item)
+        print("شماره ی کار مورد نظر برای حذف را انتخاب کنید.")
+        number = int(input("Enter a number"))
+        if 1 <= number <= len(work):
+            work.pop(number -1)
+            completed.pop(number - 1)
+            print(work)
+        else:
+            print("خطای نامعتبر!!")
+    if UserSelection == 4:
+        if work == []:
+            print("کاری ثبت نشده است.")
+            continue
+        for index, item in enumerate(work ,start=1):
+            print(index, item)
+        workperformed = int(input("شماره ی کار انجام شده را وارد کنید:"))
+        if 1 <= workperformed <= len(work):
+            completed[workperformed - 1] = True
+            print("کار با موفقیت انجام شد.")
+        else:
+            print("شماره نامعتبر است.")
+    if UserSelection == 5:
+        break
